@@ -34,6 +34,19 @@ export class LinkedList {
     this.head = newNode;
   }
 
+  size() {
+    let count = 0;
+
+    let currentNode = this.head;
+
+    while (currentNode) {
+      count += 1;
+      currentNode = currentNode.nextNode;
+    }
+
+    return count;
+  }
+
   toString() {
     let currentNode = this.head;
     let outputString = '';
