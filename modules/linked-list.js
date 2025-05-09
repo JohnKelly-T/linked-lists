@@ -58,15 +58,25 @@ export class LinkedList {
   }
 
   pop() {
+    if (this.head === null) return;
     let currentNode = this.head;
+    let prevNode = this.head;
 
-    while (currentNode.nextNode !== this.tail) {
+    while (currentNode.nextNode !== null) {
+      prevNode = currentNode;
       currentNode = currentNode.nextNode;
     }
 
-    let poppedNode = this.tail;
-    currentNode.nextNode = null;
-    this.tail = currentNode;
+    let poppedNode = currentNode;
+
+    if (currentNode === prevNode) {
+      this.head = null;
+      this.tail = null;
+      return poppedNode;
+    }
+    
+    prevNode.nextNode = null;
+    this.tail = prevNode;
 
     return poppedNode;
   }
