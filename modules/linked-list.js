@@ -101,6 +101,39 @@ export class LinkedList {
     return null;
   }
 
+  insertAt(value, index) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    let listSize = this.size();
+
+    if (listSize === index) {
+      this.append(value);
+      return;
+    }
+
+    if (listSize < index || index < 0) {
+      console.log("Error: index out of bounds");
+      return;
+    }
+
+    let newNode = new Node();
+    newNode.value = value;
+
+    let currentNode = this.head;
+    let prevNode;
+
+    for (let i = 0; i < index; i++) {
+      prevNode = currentNode;
+      currentNode = currentNode.nextNode;
+    }
+
+    prevNode.nextNode = newNode;
+    newNode.nextNode = currentNode;
+  }
+
   toString() {
     let currentNode = this.head;
     let outputString = '';
