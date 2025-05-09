@@ -47,6 +47,16 @@ export class LinkedList {
     return count;
   }
 
+  at(index) {
+    let currentNode = this.head;
+
+    for (let i = 0; i <= index; i++) {
+      currentNode = currentNode.nextNode;
+    }
+
+    return currentNode;
+  }
+
   toString() {
     let currentNode = this.head;
     let outputString = '';
