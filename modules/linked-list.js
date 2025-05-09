@@ -26,4 +26,18 @@ export class LinkedList {
     currentNode.nextNode = newNode;
     this.tail = newNode;
   } 
+
+  toString() {
+    let currentNode = this.head;
+    let outputString = '';
+
+    while (currentNode) {
+      outputString += `( ${currentNode.value} ) -> `;
+      currentNode = currentNode.nextNode;
+    }
+
+    outputString += 'null';
+
+    return outputString;
+  }
 }
