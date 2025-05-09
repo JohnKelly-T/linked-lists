@@ -27,6 +27,13 @@ export class LinkedList {
     this.tail = newNode;
   } 
 
+  prepend(value) {
+    let newNode = new Node();
+    newNode.value = value;
+    newNode.nextNode = this.head;
+    this.head = newNode;
+  }
+
   toString() {
     let currentNode = this.head;
     let outputString = '';
