@@ -2,8 +2,8 @@ import { Node } from "./node.js";
 
 export class LinkedList {
   constructor () {
-    this.head = null;
-    this.tail = null;
+    this._head = null;
+    this._tail = null;
   }
 
   append(value) {
@@ -11,33 +11,41 @@ export class LinkedList {
     let newNode = new Node();
     newNode.value = value;
 
-    if (this.head === null) {
-      this.head = newNode;
-      this.tail = newNode;
+    if (this._head === null) {
+      this._head = newNode;
+      this._tail = newNode;
       return;
     }
 
-    let currentNode = this.head;
+    let currentNode = this._head;
 
     while (currentNode.nextNode !== null) {
       currentNode = currentNode.nextNode;
     }
 
     currentNode.nextNode = newNode;
-    this.tail = newNode;
+    this._tail = newNode;
   } 
 
   prepend(value) {
     let newNode = new Node();
     newNode.value = value;
-    newNode.nextNode = this.head;
-    this.head = newNode;
+    newNode.nextNode = this._head;
+    this._head = newNode;
+  }
+
+  head() {
+    return this._head;
+  }
+
+  tail() {
+    return this._tail;
   }
 
   size() {
     let count = 0;
 
-    let currentNode = this.head;
+    let currentNode = this._head;
 
     while (currentNode) {
       count += 1;
@@ -48,7 +56,7 @@ export class LinkedList {
   }
 
   at(index) {
-    let currentNode = this.head;
+    let currentNode = this._head;
 
     for (let i = 0; i < index; i++) {
       currentNode = currentNode.nextNode;
@@ -58,9 +66,9 @@ export class LinkedList {
   }
 
   pop() {
-    if (this.head === null) return;
-    let currentNode = this.head;
-    let prevNode = this.head;
+    if (this._head === null) return;
+    let currentNode = this._head;
+    let prevNode = this._head;
 
     while (currentNode.nextNode !== null) {
       prevNode = currentNode;
@@ -70,19 +78,19 @@ export class LinkedList {
     let poppedNode = currentNode;
 
     if (currentNode === prevNode) {
-      this.head = null;
-      this.tail = null;
+      this._head = null;
+      this._tail = null;
       return poppedNode;
     }
     
     prevNode.nextNode = null;
-    this.tail = prevNode;
+    this._tail = prevNode;
 
     return poppedNode;
   }
 
   contains(value) {
-    let currentNode = this.head;
+    let currentNode = this._head;
 
     while (currentNode.nextNode !== null) {
       if (value === currentNode.value) {
@@ -96,7 +104,7 @@ export class LinkedList {
   }
 
   find(value) {
-    let currentNode = this.head;
+    let currentNode = this._head;
     let index = 0;
 
     while (currentNode.nextNode !== null) {
@@ -132,7 +140,7 @@ export class LinkedList {
     let newNode = new Node();
     newNode.value = value;
 
-    let currentNode = this.head;
+    let currentNode = this._head;
     let prevNode;
 
     for (let i = 0; i < index; i++) {
@@ -153,11 +161,11 @@ export class LinkedList {
     }
 
     if (index === 0) {
-      this.head = this.head.nextNode;
+      this._head = this._head.nextNode;
       return;
     }
 
-    let currentNode = this.head;
+    let currentNode = this._head;
     let prevNode;
 
     for (let i = 0; i < index; i++) {
@@ -169,7 +177,7 @@ export class LinkedList {
   }
 
   toString() {
-    let currentNode = this.head;
+    let currentNode = this._head;
     let outputString = '';
 
     while (currentNode) {

@@ -14,10 +14,10 @@ console.log("\n==== String version of linked list ====");
 console.log(list.toString());
 
 console.log("\n==== list head ====")
-console.log(list.head);
+console.log(list.head());
 
 console.log("\n==== list tail ====")
-console.log(list.tail);
+console.log(list.tail());
 
 console.log("\n==== Linked List size: ====");
 console.log(list.size());
@@ -39,5 +39,5 @@ list.insertAt("fish", 5);
 console.log(list.toString());
 
 console.log("\n==== Remove value at index 3 ====");
-list.removeAt(0);
+list.removeAt(3);
 console.log(list.toString());
